@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ChatService.Infrastructure" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ChatService.Infrastructure" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ConnectedStatuses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="AlreadyConnected" />
+      <xs:enumeration value="PasswordNotValid" />
+      <xs:enumeration value="Connected" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ConnectedStatuses" nillable="true" type="tns:ConnectedStatuses" />
+</xs:schema>

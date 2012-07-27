@@ -1,0 +1,35 @@
+﻿<Window x:Class="ChatApplication.View.ChatView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" Title="{Binding CurrentUser}" Height="600" Width="800" DataContext="{Binding Chat, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="bynLogShow" Content="Открыть лог" Command="{Binding LogShowCommand, Mode=OneWay}"/>
+        <ListBox Name="lstMessages" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Messages}"/>
+        <ListBox Name="lstUsers" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding Users}"/>
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Name="txtMessage" Text="{Binding CurrentMessage, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Name="btnSend" Grid.Row="2" Grid.Column="2" Content="Отправить" Command="{Binding SendMessageCommand, Mode=OneWay}">
+        </Button>
+    </Grid>
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding SendMessageCommand, Mode=OneWay}"/>
+    </Window.InputBindings>
+    <i:Interaction.Triggers>
+                <i:EventTrigger
+         EventName="Closed">
+                    <GalaSoft_MvvmLight_Command:EventToCommand
+            x:Name="ClosedWin"
+            Command="{Binding ClosedCommand, Mode=OneWay}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+</Window>
