@@ -1,0 +1,1 @@
+C:\Users\lapshin.anton\Documents\git\github\csharp\ChatApp\ChatApplication\bin\Debug\ChatApplication.exe.config
